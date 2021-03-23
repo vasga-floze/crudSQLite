@@ -47,6 +47,16 @@
         android:text="Insert"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/apellido"/>
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Update"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnInsert"/>
+
     <Button
         android:id="@+id/btnViewData"
         android:layout_width="match_parent"
@@ -54,6 +64,6 @@
         android:textSize="24dp"
         android:text="List"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnInsert"/>
+        android:layout_below="@+id/btnUpdate"/>
 
 </RelativeLayout>

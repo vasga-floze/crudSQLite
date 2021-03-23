@@ -50,6 +50,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //UPDATE (actualizar los registros)
+    public Boolean updateData(String idPersona, String nombre, String apellido){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("idPersona", idPersona);
+        contentValues.put("nombre", nombre);
+        contentValues.put("apellido", apellido);
+
+        //busqueda del registro a actualizar
+        Cursor cursor = db.rawQuery("SELECT * FROM persona WHERE idPersona=?", new String[]{idPersona});
+
+        //evaluar si el registro existe
+        if(cursor.getCount()>0){
+            long result = db.update("persona", contentValues, "idPersona=?", new String[]{idPersona});
+            if(result==-1){
+                return false;
+            }else{
+                return  true;
+            }
+        }else{
+            return false;
+        }
+
+    }
+
 }
 
 

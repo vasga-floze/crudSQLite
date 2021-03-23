@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
         EditText id, name, lastname;
-        Button insert, list;
+        Button insert, list, update;
         DatabaseHandler DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         name=findViewById(R.id.nombre);
         lastname=findViewById(R.id.apellido);
         insert=findViewById(R.id.btnInsert);
+        update= findViewById(R.id.btnUpdate);
         list=findViewById(R.id.btnViewData);
+        DB = new DatabaseHandler(this);
 
         //evento click de los bottones
 
@@ -79,6 +81,28 @@ public class MainActivity extends AppCompatActivity {
                 builder.setMessage(buffer.toString());
                 builder.show();
 
+            }
+        });
+
+        //boton actualizar
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idTXT=id.getText().toString();
+                String nameTXT= name.getText().toString();
+                String lastnameTXT=lastname.getText().toString();
+
+                Boolean checkInsert=DB.updateData(idTXT,nameTXT,lastnameTXT);//llamado al metodo updateData de la clase DatabaseHandler
+
+
+                //evaluar si la data ha sido actualizado
+                if(checkInsert==true){
+                    Toast.makeText(MainActivity.this, "Se ha actualizado el registro",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "No se ha podido actualizar el registro",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
