@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escriba los datos"
+        android:textSize="24dp"
+        android:layout_marginTop="20dp"/>
+    <EditText
+        android:id="@+id/id"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="24dp"
+        android:hint="Codigo"
+        android:layout_below="@id/titulo"
+        android:inputType="text"/>
+    <EditText
+    android:id="@+id/nombre"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:textSize="24dp"
+    android:hint="Nombre"
+    android:layout_below="@id/id"
+    android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/apellido"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textSize="24dp"
+        android:hint="Apellido"
+        android:layout_below="@id/nombre"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="Insert"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/apellido"/>
+    <Button
+        android:id="@+id/btnViewData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="List"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnInsert"/>
+
+</RelativeLayout>
