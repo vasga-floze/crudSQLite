@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 //leer el cursosr y almacenar registros en un StringBuffer
                 while(result.moveToNext()){
                     buffer.append("Codigo: " + result.getString(0) + "\n"); //Se accede al index
-                    buffer.append("Nombre: " + result.getString(0) + "\n");
-                    buffer.append("Apellido: " + result.getString(0) + "\n");
+                    buffer.append("Nombre: " + result.getString(1) + "\n");
+                    buffer.append("Apellido: " + result.getString(2) + "\n\n");
                 }
 
                 //mostrar los datos
