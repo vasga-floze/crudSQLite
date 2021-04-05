@@ -75,6 +75,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    //Eliminar reegistro
+    public Boolean deleteData(String id){//busqueda mediante id
+        SQLiteDatabase db = this.getWritableDatabase();
+        //busqueda del registro a eliminar
+        Cursor cursor = db.rawQuery("SELECT * FROM persona WHERE idPersona=?", new String[]{id});
+
+        if(cursor.getCount()>0){
+            //el delete es un metodo de la clase SQLiteDatabase
+            long result = db.delete("persona", "idPersona=?", new String[]{id});
+            if(result==-1){
+                return false;
+            }else{
+                return  true;
+            }
+        }else{
+            return false;
+        }
+    }
+
 }
 
 

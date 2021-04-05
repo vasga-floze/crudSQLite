@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
         EditText id, name, lastname;
-        Button insert, list, update;
+        Button insert, list, update, delete;
         DatabaseHandler DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         insert=findViewById(R.id.btnInsert);
         update= findViewById(R.id.btnUpdate);
         list=findViewById(R.id.btnViewData);
+        delete=findViewById(R.id.btnDelete);
         DB = new DatabaseHandler(this);
 
         //evento click de los bottones
@@ -101,6 +102,24 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(MainActivity.this, "No se ha podido actualizar el registro",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        //boton eliminar
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String idTXT = id.getText().toString();
+
+                Boolean checkdeleteData=DB.deleteData(idTXT);
+                //evaluar si la data ha sido eliminada
+                if(checkdeleteData==true){
+                    Toast.makeText(MainActivity.this, "El registro se ha eliminado",
+                            Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "El registro no se pudo eliminar",
                             Toast.LENGTH_LONG).show();
                 }
             }
