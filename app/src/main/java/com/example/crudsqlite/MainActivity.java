@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+        String idP;
         EditText id, name, lastname;
         Button insert, list, update, delete;
         DatabaseHandler DB;
+        String action="new";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         list=findViewById(R.id.btnViewData);
         delete=findViewById(R.id.btnDelete);
         DB = new DatabaseHandler(this);
+
+        showData(); //permitira mostrar los datos recibidos del ListActivity
+
 
         //evento click de los bottones
 
@@ -125,5 +131,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void showData() {
+        try{
+            Bundle bundle= getIntent().getExtras();
+            action = bundle.getString("action");
+            if(action.equals("edit")){
+
+                //mostar/ocultar botones
+                update.setVisibility(View.VISIBLE);
+                insert.setVisibility(View.GONE);
+
+                idP= bundle.getString("id");
+                String person[]=bundle.getStringArray("person");
+                TextView tempVal = (TextView) findViewById(R.id.id);
+                tempVal.setText(idP);
+
+                tempVal=(TextView) findViewById(R.id.nombre);
+                tempVal.setText(person[0].toString());
+
+                tempVal=(TextView) findViewById(R.id.apellido);
+                tempVal.setText(person[1].toString());
+            }
+            //TODO: este else no funciona, se prentende que funcione el delete del menu
+            else{
+
+                //mostar/ocultar botones
+                update.setVisibility(View.GONE);
+                insert.setVisibility(View.GONE);
+                delete.setVisibility(View.VISIBLE);
+
+                idP= bundle.getString("id");
+                String person[]=bundle.getStringArray("person");
+                TextView tempVal = (TextView) findViewById(R.id.id);
+                tempVal.setText(idP);
+
+                tempVal=(TextView) findViewById(R.id.nombre);
+                tempVal.setText(person[0].toString());
+
+                tempVal=(TextView) findViewById(R.id.apellido);
+                tempVal.setText(person[1].toString());
+            }
+        }catch (Exception e){
+            Toast.makeText(MainActivity.this, "Error: " +
+                    e.getMessage().toString(), Toast.LENGTH_LONG).show();
+
+        }
     }
 }

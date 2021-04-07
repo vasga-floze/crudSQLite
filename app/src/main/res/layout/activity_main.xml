@@ -55,7 +55,8 @@
         android:textSize="24dp"
         android:text="Update"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnInsert"/>
+        android:layout_below="@+id/btnInsert"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnDelete"
@@ -64,7 +65,8 @@
         android:textSize="24dp"
         android:text="Delete"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnUpdate"/>
+        android:layout_below="@+id/btnUpdate"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnViewData"
@@ -73,6 +75,7 @@
         android:textSize="24dp"
         android:text="List"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/btnDelete"/>
+        android:layout_below="@+id/btnDelete"
+        android:visibility="gone"/>
 
 </RelativeLayout>
